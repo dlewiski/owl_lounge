@@ -1,0 +1,26 @@
+<div style="text-align:center">
+  <h2>Welcome to the best trail tracker EVER</h2>
+  <img src="" alt="beautiful mountain landscape">
+  <br>
+</div>
+
+<form class="form-group" action="/" method="post">
+  <div>
+    <label for="region">Add a Region</label>
+    <br>
+    <br>
+    <input type="text" name="region" id="region">
+    <br>
+    <br>
+    <button type="submit" class="btn btn-success">Add Region</button>
+  </div>
+</form>
+
+<div class="well" style="text-align:center">
+  <h3>REGIONS:</h3>
+  <ul>
+    <% @regions.each() do |region| %>
+      <li><a href="/<%=region.name%>"><%= region.name %></li>
+    <% end %>
+  </ul>
+</div>

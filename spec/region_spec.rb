@@ -1,4 +1,5 @@
 require("spec_helper")
+require('pry')
 
 describe(Region) do
 
@@ -10,4 +11,14 @@ describe(Region) do
       expect(test_region.trails()).to(eq([test_trail1, test_trail2]))
     end
   end
-end
+
+  describe("#finds") do
+    it("returns the region that contains the region name") do
+      test_region1 = Region.create({:name => "Mount Hood"})
+      test_region2 = Region.create({:name => "Painted Hills"})
+      regions = Region.all
+      expect(regions.where(name: test_region1.name)).to(eq([test_region1]))
+    end
+  end
+
+end # Region

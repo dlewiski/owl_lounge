@@ -1,0 +1,28 @@
+<h2><%=@region_name%></h2>
+<br>
+<h2>Fill out the form to add a trail to this region</h2>
+<form class="form-group" action="/<%=@region_name%>" method="post">
+  <div>
+    <label for="trail_name">Name of trail</label>
+    <br>
+    <br>
+    <input type="text" name="trail_name" id="trail_name">
+    <br>
+    <br>
+    <label for="length">Length of trail</label>
+    <br>
+    <br>
+    <input type="text" name="length" id="length">
+    <br>
+    <br>
+    <button type="submit" class="btn btn-success">Add trail</button>
+  </div>
+</form><br>
+
+<h3>TRAILS in <%=@region_name%>:</h3>
+<ul>
+  <% @trails.each() do |trail| %>
+    <li><%=trail.name%>, length of trail is <%=trail.length%></li>
+
+  <% end %>
+</ul>
