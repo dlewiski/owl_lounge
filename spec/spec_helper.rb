@@ -11,6 +11,11 @@ RSpec.configure do |config| # clear db between spec runs
     Trail.all.each do |trail|
       trail.destroy
     end
+  end
+end
+
+RSpec.configure do |config| # clear db between spec runs
+  config.after(:each) do
     Region.all.each do |region|
       region.destroy
     end
