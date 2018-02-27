@@ -20,9 +20,10 @@
 </form><br>
 
 <h3>TRAILS in <%=@region_name%>:</h3>
-<ul>
+<ul style="list-style: none;">
   <% @trails.each() do |trail| %>
-    <li><%=trail.name%>, length of trail is <%=trail.length%></li>
-
+  <% if @region_id == trail.region_id %>
+      <li><a href="/trail/<%= trail.id %>"><%=trail.name %></a>, length of trail is <%=trail.length%></li>
+    <% end %>
   <% end %>
 </ul>
