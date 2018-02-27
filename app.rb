@@ -21,21 +21,21 @@ post('/') do
 end
 
 get('/:name') do
-  @region_name = params[:name]
   @trails = Trail.all
+  @region_name = params[:name]
   regions = Region.all
   @region_id = (regions.where(name: @region_name)).first.id
   erb(:region)
 end
 
 post('/:name') do
-  @trails = Trail.all
   @region_name = params[:name]
   trail_name = params[:trail_name]
   trail_length = params[:length].to_i
   regions = Region.all
-  region_id = (regions.where(name: @region_name)).first.id
-  new_trail = Trail.create(:name => trail_name, :length => trail_length, :region_id => region_id)
+  @region_id = (regions.where(name: @region_name)).first.id
+  new_trail = Trail.create(:name => trail_name, :length => trail_length, :region_id => @region_id)
+  @trails = Trail.all
   erb(:region)
 end
 
